@@ -36,6 +36,8 @@
         border-radius: 15px;
         padding: 40px 30px;
         box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+        max-width: 90%;
+        margin: 0 20px;
       }
       .logo {
         max-width: 150px;
@@ -58,6 +60,9 @@
       }
       .subscribe {
         margin: 20px 0;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
       }
       .subscribe input {
         padding: 15px;
@@ -104,6 +109,37 @@
       .contact a:hover {
         text-decoration: underline;
       }
+
+      /* Media Queries */
+      @media (max-width: 768px) {
+        h1 {
+          font-size: 2.5em;
+        }
+        p {
+          font-size: 1em;
+        }
+        .countdown {
+          font-size: 1.5em;
+        }
+      }
+      @media (max-width: 480px) {
+        .container {
+          padding: 20px;
+        }
+        h1 {
+          font-size: 2em;
+        }
+        p {
+          font-size: 0.9em;
+        }
+        .countdown {
+          font-size: 1.2em;
+          padding: 5px 10px;
+        }
+        .subscribe input {
+          width: 200px;
+        }
+      }
     </style>
   </head>
   <body>
@@ -114,13 +150,11 @@
       <p>Your gateway to unforgettable events in Oman</p>
       <div class="countdown" id="countdown">00:00:00:00</div>
       <div class="subscribe">
-        <input type="email" placeholder="Enter your email" />
-        <button>Notify Me</button>
+        <input type="email" id="email" placeholder="Enter your email" />
+        <button id="subscribeBtn">Notify Me</button>
       </div>
       <div class="social">
-        <a href="https://facebook.com/tazkaraplus" target="_blank"><i class="fab fa-facebook"></i></a>
-        <a href="https://twitter.com/tazkaraplus" target="_blank"><i class="fab fa-twitter"></i></a>
-        <a href="https://instagram.com/tazkaraplus" target="_blank"><i class="fab fa-instagram"></i></a>
+        <a href="https://www.linkedin.com/company/tazkara-plus" target="_blank"><i class="fab fa-linkedin"></i></a>
       </div>
       <div class="contact">
         <p>Contact us at <a href="mailto:info@tazkaraplus.com">info@tazkaraplus.com</a></p>
@@ -147,6 +181,17 @@
           countdown.innerHTML = "We're Live!";
         }
       }, 1000);
+
+      // Mock email submission
+      const subscribeBtn = document.getElementById("subscribeBtn");
+      subscribeBtn.addEventListener("click", () => {
+        const email = document.getElementById("email").value;
+        if (email) {
+          alert(`Thank you for subscribing with ${email}! We'll notify you when we go live.`);
+        } else {
+          alert("Please enter a valid email address.");
+        }
+      });
     </script>
   </body>
 </html>
